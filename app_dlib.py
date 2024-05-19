@@ -17,14 +17,14 @@ sp = dlib.shape_predictor(PREDICTOR_PATH)
 facerec = dlib.face_recognition_model_v1(FACE_REC_MODEL_PATH)
 
 class App:
-    def __init__(self, window, window_title, video_source=0):
+    def __init__(self, window, window_title, video_source=1):
         self.window = window
         self.window.title(window_title)
         self.video_source = video_source
 
         self.vid = MyVideoCapture(self.video_source)
 
-        self.canvas = tk.Canvas(window, width=self.vid.width, height=self.vid.height)
+        self.canvas = tk.Canvas(window, width=1600, height=800)
         self.canvas.pack()
 
         self.btn_snapshot = tk.Button(window, text="Capture Photo", command=self.snapshot)

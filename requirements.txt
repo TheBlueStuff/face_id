@@ -3,3 +3,4 @@ dlib
 opencv-python
 Pillow
 scipy
+azure-cognitiveservices-vision-face
