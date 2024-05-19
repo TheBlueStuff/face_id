@@ -6,6 +6,7 @@ import tkinter as tk
 from PIL import Image, ImageTk
 import dlib
 from scipy.spatial import distance
+import platform
 
 # Paths to the dlib models
 PREDICTOR_PATH = "./shape_predictor_5_face_landmarks.dat"
@@ -17,7 +18,9 @@ sp = dlib.shape_predictor(PREDICTOR_PATH)
 facerec = dlib.face_recognition_model_v1(FACE_REC_MODEL_PATH)
 
 class App:
-    def __init__(self, window, window_title, video_source=1):
+    def __init__(self, window, window_title, video_source=0):
+        if platform.system() == 'Darwin':
+            video_source = 1
         self.window = window
         self.window.title(window_title)
         self.video_source = video_source

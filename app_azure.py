@@ -6,6 +6,7 @@ from PIL import Image, ImageTk
 from azure.cognitiveservices.vision.face import FaceClient
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.face.models import QualityForRecognition
+import platform
 
 # Set your Azure Face API key and endpoint
 KEY = os.environ["VISION_KEY"]
@@ -19,7 +20,9 @@ PERSON_ID = '6b74177a-1159-4b6b-adc0-32ddac9204f7'
 face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
 
 class App:
-    def __init__(self, window, window_title, video_source=1):
+    def __init__(self, window, window_title, video_source=0):
+        if platform.system() == 'Darwin':
+            video_source = 1
         self.window = window
         self.window.title(window_title)
         self.video_source = video_source
