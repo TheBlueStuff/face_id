@@ -1,0 +1,5 @@
+tk
+dlib
+opencv-python
+Pillow
+scipy
